@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>Kiran</groupId>
+        <artifactId>kiran_projects</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+    </parent>
+    <packaging>pom</packaging>
+    <name>Kiran Utility Implementations</name>
+    <artifactId>kiran_common_utilities</artifactId>
+
+    <modules>
+        <module>concurrencyUtilities</module>
+        <module>fileUtility</module>
+        <module>tcpUtility</module>
+        <module>datastructures</module>
+        <module>patterns</module>
+    </modules>
+</project>
