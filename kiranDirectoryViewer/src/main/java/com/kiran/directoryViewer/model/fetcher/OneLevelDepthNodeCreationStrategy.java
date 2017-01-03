@@ -22,6 +22,7 @@ class OneLevelDepthNodeCreationStrategy implements NodeCreationStrategy {
         this(nodeToRecreate.getPath(), nodeToRecreate.getParent());
     }
 
+    @SuppressWarnings("WeakerAccess")
     OneLevelDepthNodeCreationStrategy(Path absolutePath, DirectoryStructureNode parent) {
         this.absolutePath = absolutePath;
         this.parent = parent;
@@ -34,7 +35,13 @@ class OneLevelDepthNodeCreationStrategy implements NodeCreationStrategy {
             DirectoryNode directoryNode = new DirectoryNode(absolutePath, fileAttributes.creationTime(),
                     fileAttributes.lastModifiedTime(), this.parent);
             for (Path child : stream) {
-                directoryNode.addChild(getDummyNode(child, directoryNode));
+                if (Files.isDirectory(child)) {
+                    directoryNode.addChild(getDummyNode(child, directoryNode));
+                } else {
+                    fileAttributes = getBasicFileAttributes(child);
+                    directoryNode.addChild(new FileNode(directoryNode, this.absolutePath,
+                            fileAttributes.creationTime(), fileAttributes.lastModifiedTime(), fileAttributes.size()));
+                }
             }
 
             return directoryNode;
