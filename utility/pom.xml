@@ -16,5 +16,6 @@
         <module>tcpUtility</module>
         <module>datastructures</module>
         <module>patterns</module>
+        <module>kiran_database</module>
     </modules>
 </project>
